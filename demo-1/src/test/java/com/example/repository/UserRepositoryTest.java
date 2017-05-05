@@ -11,22 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.example.model.user.UserModel;
 import com.example.respository.UserRepository;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.github.springtestdbunit.annotation.DatabaseTearDown;
 
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
-	TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.HSQL)
-@DatabaseSetup(value="/sampledata/users.xml")
-@DatabaseTearDown(type = DatabaseOperation.DELETE_ALL, value = { "/sampledata/users.xml" })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @SpringBootTest
 public class UserRepositoryTest {
 
@@ -34,8 +27,9 @@ public class UserRepositoryTest {
 	private UserRepository userRepo;
 
 	@Test
+	@DatabaseSetup("/sampledata/users.xml")
 	public void testGetUserById() {
-		final UserModel user = userRepo.getUserById(0L);
+		final UserModel user = userRepo.getUserById(1L);
 		assertNotNull(user);
 	}
 }
