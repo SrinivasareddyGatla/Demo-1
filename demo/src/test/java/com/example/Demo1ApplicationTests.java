@@ -14,6 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.model.user.UserModel;
 import com.example.respository.UserRepository;
 
+/**
+ * test
+ * @author sgatla
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Demo1ApplicationTests {
