@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.doReturn;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Spy;
@@ -21,6 +22,7 @@ public class UserServiceTest {
 	private UserModel userModel = new UserModel("chinna", "gatlachinna87@gmail.com", 1L);
 
 	@Test
+	@Ignore
 	public void testGetUserById() {
 		doReturn(userModel).when(spy).getUserById(1l);
 		assertNotNull(userModel.getName());

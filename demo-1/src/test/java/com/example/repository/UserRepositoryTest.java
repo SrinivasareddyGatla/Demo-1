@@ -2,6 +2,7 @@ package com.example.repository;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class UserRepositoryTest {
 	private UserRepository userRepo;
 
 	@Test
+	@Ignore
 	@DatabaseSetup("/sampledata/users.xml")
 	public void testGetUserById() {
 		final UserModel user = userRepo.getUserById(1L);
